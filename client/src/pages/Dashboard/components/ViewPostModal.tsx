@@ -36,6 +36,12 @@ function ViewPostModal({
           </article>
         ))}
       </Modal.Body>
+      <Modal.Body>
+        {postData && !postData.getPostsForPet.length && (
+          <p>No posts have been added.</p>
+        )}
+        
+      </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleModalClose}>
           Close

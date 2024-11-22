@@ -16,7 +16,7 @@ const initialFormData = {
 function PetForm() {
   const [formData, setFormData] = useState(initialFormData);
   const [createPet] = useMutation(CREATE_PET, {
-    refetchQueries: [GET_USER_PETS]
+    refetchQueries: [{ query: GET_USER_PETS }]
   });
   const navigate = useNavigate();
 
@@ -68,7 +68,7 @@ function PetForm() {
 
         <Form.Group className="mb-3">
           <Form.Label>Enter the Pet's Age</Form.Label>
-          <Form.Control name="age" onChange={handleInputChange} value={formData.age} type="number"/>
+          <Form.Control name="age" onChange={handleInputChange} value={formData.age} type="number" />
         </Form.Group>
 
         <div className="d-grid gap-2">

@@ -3,7 +3,7 @@ import { Button, Form, Modal, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 
 import { CREATE_POST } from '../../../graphql/mutations';
-import { GET_POSTS_FOR_PET } from '../../../graphql/queries';
+import { GET_POSTS_FOR_PET, GET_ALL_POSTS } from '../../../graphql/queries';
 import { Pet } from '../../../interfaces';
 
 const initialFormData = {
@@ -30,11 +30,11 @@ function CreatePostModal({
       variables: {
         petId: selectedPet?._id
       }
-    }]
+    }, { query: GET_ALL_POSTS }]
   });
 
   const handleModalClose = () => {
-    setFormData({...initialFormData});
+    setFormData({ ...initialFormData });
     setShowCreatePostModal(false);
   };
 
@@ -54,7 +54,7 @@ function CreatePostModal({
         }
       });
 
-      setFormData({...initialFormData});
+      setFormData({ ...initialFormData });
 
       handleModalClose();
     } catch (error: any) {
@@ -88,12 +88,12 @@ function CreatePostModal({
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Enter the post details</Form.Label>
-            <Form.Control 
-              name="body" 
+            <Form.Control
+              name="body"
               value={formData.body}
-              onChange={handleInputChange} 
-              as="textarea" 
-              rows={3} 
+              onChange={handleInputChange}
+              as="textarea"
+              rows={3}
               placeholder="Type your details" />
           </Form.Group>
         </Form>

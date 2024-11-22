@@ -15,7 +15,8 @@
     "start": "node ./server/dist/server.js",
     "render:install": "cd ./server && npm i",
     "install": "cd ./server && npm i && cd ../client && npm i",
-    "test": "concurrently \"npm run dev\" \"wait-on tcp:5173 && cd ./client && npm run cypress:open\"",
+    "test:dev": "concurrently \"npm run dev\" \"wait-on tcp:5173 && cd ./client && npm run cypress:open\"",
+    "test": "concurrently \"npm run dev\" \"wait-on tcp:5173 && cd ./client && npm run cypress:run\"",
     "prep": "npm run client:build && npm run server:build"
   },
   "keywords": [],
